@@ -16,6 +16,7 @@ RSpec.describe Book, type: :model do
     book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
     expect(book).to be_valid
   end
+  
   it 'is valid with valid description length' do
     book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
     expect(book).to be_valid

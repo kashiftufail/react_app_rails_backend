@@ -1,31 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  it 'is valid with a valid attributes' do
-    book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
-    expect(book).to be_valid
+
+  subject {
+    described_class.new(title: "lovely rspec",
+                        description: "lovely way to solid testing with rspec")
+  }
+
+
+  it 'is valid with a valid attributes' do    
+    expect(subject).to be_valid
   end
   it 'is not valid without title' do
-    book = Book.new(title: nil)
-    expect(book).not_to be_valid
+    subject.title = nil
+    expect(subject).not_to be_valid
   end
   it 'is not valid without description' do
-    book = Book.new(description: nil)
-    expect(book).not_to be_valid
+    subject.description = nil
+    expect(subject).not_to be_valid
   end
-  it 'is valid with valid title length' do
-    book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
-    expect(book).to be_valid
+  it 'is invalid with short title length' do
+    subject.title = 'lo'    
+    expect(subject).not_to be_valid
   end
   
-  it 'is valid with valid description length' do
-    book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
-    expect(book).to be_valid
+  it 'is invalid with short description length' do
+    subject.description = 'too short'
+    expect(subject).not_to be_valid
   end
-
-
-
-  
-
 
 end

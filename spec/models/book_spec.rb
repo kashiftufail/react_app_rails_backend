@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Book, type: :model do
   it 'is valid with a valid attributes' do
-    expect(Book.new).to be_valid
+    book = Book.new(title: 'lovely rspec',description: 'lovely way to solid testing with rspec')
+    expect(book).to be_valid
   end
   it 'is not valid without title' do
     book = Book.new(title: nil)

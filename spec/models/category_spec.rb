@@ -7,7 +7,6 @@ RSpec.describe Category, type: :model do
   end
   
   describe "associations" do 
-    it { should have_many(:books) }
-    
+    it { should have_many(:books) }    
   end
 end
